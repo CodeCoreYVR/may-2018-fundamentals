@@ -1,0 +1,18 @@
+/* css */
+/* css comment */
+/* selector */
+/* {} = declaration */
+/* property: value; */
+img {
+  width: 400px;
+  border: 5px dashed firebrick;
+}
+
+h1 {
+  color: purple;
+  background-color: yellow;
+}
+
+p {
+  font-family: sans-serif;
+}
