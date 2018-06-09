@@ -1,0 +1,19 @@
+a {
+  background-color: lightgrey;
+  border-radius: 5px;
+  color: darkgrey;
+  text-decoration: none;
+  font-family: sans-serif;
+  padding: 10px;
+}
+
+h1 {
+  font-family: monospace;
+  color: firebrick;
+  font-size: 50px;
+}
+
+img {
+  max-width: 400px;
+  border: thick solid firebrick;
+}
