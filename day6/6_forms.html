@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+    <style>
+      input[type=text], input[type=email], input[type=phone] {
+        border: 0px;
+        border-bottom: thick purple solid;
+      }
+      input[type=submit] {
+        border: 0px;
+        background-color: #4285F4;
+        color: white;
+        font-family: sans-serif;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      label {
+        display: inline-block;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Contact Us!</h1>
+
+    <form>
+      <div>
+        <label>Name:</label>
+        <input placeholder="Your answer" type="text">
+      </div>
+      <div>
+        <label>Email:</label>
+        <input type="email">
+      </div>
+      <div>
+        <label>Phone:</label>
+        <input type="phone">
+      </div>
+      <div>
+        <label>Comments:</label>
+        <textarea></textarea>
+      </div>
+      <input type="submit">
+    </form>
+  </body>
+</html>

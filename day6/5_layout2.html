@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Layout</title>
+    <style>
+      div {
+        display: block;
+        width: 100px;
+        height: 100px;
+        float: left;
+      }
+      nav {
+        margin-top: 30px;
+      }
+      #navigation {
+        position: fixed;
+      }
+
+      a {
+        background-color: lightgrey;
+        border-radius: 5px;
+        color: darkgrey;
+        text-decoration: none;
+        font-family: sans-serif;
+        margin: 20px;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navigation" style="background-color: red; width: 100%;">
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Order Form</a>
+        <a href="#">Contact Us</a>
+      </nav>
+    </div>
+    <div style="background-color: green; width: 25%; height: 1000px;"></div>
+    <div style="background-color: yellow; width: 50%; height: 1000px;"></div>
+    <div style="background-color: blue; width: 25%; height: 1000px;"></div>
+    <div style="background-color: orange; width: 100%;"></div>
+  </body>
+</html>
