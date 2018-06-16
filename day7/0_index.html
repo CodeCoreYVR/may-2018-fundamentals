@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>DOM Example</title>
+    <script>
+      // events
+      document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("header").innerHTML = "Cale was here";
+      });
+
+      // javascript goes here
+      console.log("Hello from JavaScript inside a webpage");
+      window.alert("This is a popup from JavaScript!");
+      // write to the document, or stage, or viewport or browser window
+      document.write("This message is coming from JavaScript");
+
+      // at this point, the H1 tag has not been defined
+      //document.getElementById("header").innerHTML = "Ciro was here";
+
+      // let object = document.getElementById("header");
+      // // the inner text sitting between your selected element's tags
+      // object.innerHTML = "Ciro was here";
+    </script>
+  </head>
+  <body>
+    <h1 id="header">Jacob was here!</h1>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Form Example</title>
+    <!-- 1. jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+      // 2. is the document ready?
+      $(document).ready(function(){
+        // 3. select the form
+        $('form').submit(function(event){
+          event.preventDefault();
+          // what was typed in the username  field
+          console.log( $('#username').val() ); // getter and setter
+          $('#username').val('jasontam'); // getter and setter
+          // $('input[type=text]')
+          // what was typed in the password field
+          // i am going to try to pause the default action of this form
+          console.log( $('#password').val() ); // getter and setter
+          $('#password').val('tweetythebird');
+          console.log("a form was submitted!");
+        }); // selecting the tag name
+        // $('#login');
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Login Form</h1>
+    <form id="login" action="http://www.reddit.com/">
+      <input id="username" type="text" placeholder="username">
+      <input id="password" type="password" placeholder="password">
+      <input type="submit">
+  </body>
+</html>

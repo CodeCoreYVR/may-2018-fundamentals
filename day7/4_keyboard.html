@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Falcon 9 Heavy</title>
+    <style>
+      body {
+        background-color: skyblue;
+      }
+      img {
+        width: 100px;
+        position: absolute;
+        bottom: 1px;
+        left: 50vw;
+      }
+    </style>
+    <!-- 1. jquery cdn, bring in our external js library: jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+      // 2. make sure the rocket ship has finished loading
+      $(document).ready(function() {
+        // 3. listen for any keypress on the page
+        let bottomPos = parseInt($('#rocket').css('bottom'));
+
+        // this will return to you: 0px;
+        // $('#rocket').css('bottom')
+
+        $(document).keypress(function(event){
+          // event.which;
+          console.log(event.key);
+          if (event.key == "w") {
+            raiseTheRocket();
+          }
+        });
+
+        function raiseTheRocket() {
+          setInterval(function() {
+            console.log("raise the rocket!");
+            $('#rocket').css('bottom', bottomPos+=2);
+            console.log($('#rocket').css('bottom'));
+            console.log(bottomPos);
+          }, 1);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <img id="rocket" src="https://forum.nasaspaceflight.com/index.php?action=dlattach;topic=32528.0;attach=567903;image">
+  </body>
+</html>

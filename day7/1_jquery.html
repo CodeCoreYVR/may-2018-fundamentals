@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery Demo</title>
+    <!-- a link to external javascript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+      // our javascript
+      document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("header").innerHTML("Ciro was here");
+      });
+
+      // it's waiting for our page to be ready, and when it is, run the function being passed in.
+      // $(function(){ console.log("The page is ready!") });
+
+      // jquery $ function
+      // $ == select
+      // select the document, and when it is ready, run a function
+      $(document).ready(function(){
+        $('#header').html('Cale was here');
+      });
+    </script>
+    <style>
+      h1 {
+        color: gold;
+      }
+      #header {
+        color: gold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="header">Jacob was here</h1>
+  </body>
+</html>
+
+
+
+
+
+<!--  -->
