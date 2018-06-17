@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Form Exercises</title>
+
+    <style media="screen">
+      table, tr, td {
+        border: 0.5px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <form id='narry'>
+      <input type="text" name="name" />
+      <input type="submit" value="SUBMIT NAME">
+    </form>
+
+    <table id='names-table'>
+      <tr>
+        <td>Ciro</td>
+      </tr>
+    </table>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $('form#narry').on('submit', function(event) {
+        event.preventDefault()
+
+        let name = $('input[type="text"]').val()
+
+        $('table#names-table').append(`<tr><td>${name}</td></tr>`)
+
+        $('input[type="text"]').val('')
+      })
+    </script>
+  </body>
+</html>
