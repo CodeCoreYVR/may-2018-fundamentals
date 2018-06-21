@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+    <style media="screen">
+      @media (max-width: 1100px) {
+        ul { flex-direction: column; }
+      }
+
+      @media (min-width: 300px) {
+        body { background-color: deepskyblue; }
+      }
+
+      @media (min-width: 500px) {
+        body { background-color: goldenrod; }
+      }
+
+      @media (min-width: 700px) {
+        body { background-color: purple; }
+      }
+
+      @media (min-width: 900px) {
+        body { background-color: pink; }
+      }
+
+      @media (min-width: 1100px) {
+        body { background-color: lime; }
+      }
+
+      @media (min-width: 1300px) {
+        body { background-color: white; }
+      }
+
+      body {
+        font-family: 'Press Start 2P', cursive;
+        transition: background-color 1s;
+      }
+
+      ul {
+        display: flex;
+        list-style-type: none;
+      }
+
+      li {
+        padding: 20px;
+      }
+
+      a {
+        text-decoration: none;
+        color: grey;
+      }
+
+      li:hover, li:hover a {
+        font-weight: bold;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">Newsletter</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </body>
+</html>

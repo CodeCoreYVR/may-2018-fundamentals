@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Intro to Flexbox</title>
+
+    <style>
+      .container {
+        height: 500px;
+        background-color: teal;
+        border: 2px solid black;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row-reverse;
+      }
+
+      .square {
+        width: 100px;
+        height: 100px;
+        background-color: goldenrod;
+        margin: 10px;
+        font-size: 36px;
+        color: white;
+
+        /* display: inline-block; */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="square">1</div>
+      <div class="square">2</div>
+      <div class="square">3</div>
+      <div class="square">4</div>
+      <div class="square">5</div>
+      <div class="square">6</div>
+      <div class="square">7</div>
+    </div>
+  </body>
+</html>
