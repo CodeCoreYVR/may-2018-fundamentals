@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To Do List</title>
+    <!-- TASK. i want to stop the page from reloading when you press submit -->
+    <!-- step 1: include jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCz34Y2zLaqRjRt4ZiGfULwgNnTtJequ9Y",
+        authDomain: "day9-151ab.firebaseapp.com",
+        databaseURL: "https://day9-151ab.firebaseio.com",
+        projectId: "day9-151ab",
+        storageBucket: "day9-151ab.appspot.com",
+        messagingSenderId: "575465161051"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <!-- step 2: verify jquery is enabled -->
+    <script>
+      // let todoList = [
+      //   "Walk the dog",
+      //   "Make dinner",
+      //   "Wash the dishes"
+      // ];
+
+      // step 3: wait for the page to finish loading
+      $(document).ready(function(){
+        // i am going to connect to my database
+        const todoRef = firebase.database().ref('/todo');
+
+        // the first time you connect to Firebase, it will send you all the
+        // todo item one at a time with `child_added`. After that, every time you
+        // insert something to `todo` it will trigger the `child_added` again
+        todoRef.on('child_added', function(data) {
+          // console.log(data);
+          console.log(data.key);
+          console.log(data.val()); // returns a js obj
+          console.log(data.val().item); // string
+
+          $('ol').append('<li>' + data.val().item + '</li>');
+          // $('ol').append(`<li>${data.val().item}</li>`);
+
+          // append the record to my list...
+          // const data = {
+          //   item: "Watch Seinfeld"
+          // }
+          //
+          // data.item;
+          // // data["item"]
+        });
+
+        $('#item').focus();
+        // $('h1').html('Jacob's To Do List');
+        $('h1').html('Jacob\'s To Do List');
+        // $('h1').html(`Jacob's To Do List`);
+        // $('h1').html("Jacob's To Do List");
+
+        // step 4: capture when the form is submitted
+        $('form').submit(function(event){
+          console.log("A form was submitted!!!");
+          event.preventDefault();
+          // step 5: append to the list
+
+          // decorator pattern
+          // $('#id').val(), retrieve the text within our form element
+          // let decorator = '<li>' + $('#item').val() + '</li>';
+          // $('ol').append(decorator);
+          //
+
+          // WRTIE TO THE DATABASE!!!
+          // this will push your data into the firebase database
+          // this will fire an on child_added event, and that event handler currently takes care of prepending...
+          todoRef.push({ item: $('#item').val() });
+
+          // clear the form
+          // $('form').reset();
+          $('#item').val('').focus(); // getters & setters
+        });
+      });
+      // $(function(){});
+      // $(document).on('ready', function(){});
+    </script>
+  </head>
+  <body>
+    <h1>To Do List</h1>
+    <ol>
+      <li>Walk the dog</li>
+      <li>Make dinner</li>
+      <li>Wash the dishes</li>
+      <li>Water the plants</li>
+    </ol>
+
+    <h2>Add an item to the list:</h2>
+    <!-- REST - Representation State Transfer... -->
+    <!-- GET and POST -->
+    <!-- parameter list -->
+    <!-- ?item=Take+a+shower -->
+    <!-- escaping the text -->
+    <!-- ?item=Take+a+shower&time=22%3A30 -->
+    <form action="" method="POST">
+      <input id="item" name="item" type="text">
+      <input name="time" type="time">
+      <input type="submit">
+    </form>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+<!--  -->
