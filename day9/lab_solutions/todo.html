@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To Do List</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCz34Y2zLaqRjRt4ZiGfULwgNnTtJequ9Y",
+        authDomain: "day9-151ab.firebaseapp.com",
+        databaseURL: "https://day9-151ab.firebaseio.com",
+        projectId: "day9-151ab",
+        storageBucket: "day9-151ab.appspot.com",
+        messagingSenderId: "575465161051"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script>
+      $(document).ready(function() {
+        const todoRef = firebase.database().ref('/todo');
+        const db = firebase.database();
+
+        todoRef.on('child_added', function(data) {
+          const id = data.key
+          const todo = data.val()
+          const completed = todo.completed ? 'Complete' : 'Not Complete'
+
+          $('ol').append(`
+            <li id="todo-${id}">
+              ${data.val().item}
+              <button id="delete-${id}" class='delete-button'>delete</button>
+              <a href="javascript:void(0)" id="completed-${id}">${completed}</a>
+            </li>
+          `);
+
+          $(`#delete-${id}`).click(function(event) {
+            event.preventDefault()
+
+            firebase.database().ref(`/todo/${id}`).remove()
+
+            console.log('delete button clicked', id)
+          });
+
+
+          $(`#completed-${id}`).click(function(event) {
+            event.preventDefault()
+
+            const todo = db.ref(`/todo/${id}`)
+
+            todo.child('completed').once('value', function(data) {
+              const completed = data.val()
+              todo.update({ completed: !completed })
+            })
+          })
+        });
+
+        todoRef.on('child_removed', function(data) {
+          const id = data.key
+
+          $(`#todo-${id}`).fadeOut()
+        })
+
+        todoRef.on('child_changed', function(data) {
+          const id = data.key
+          const todo = data.val()
+          const completed = todo.completed ? 'Complete' : 'Not Complete'
+
+          $(`#completed-${id}`).text(completed)
+        })
+
+        $('form').submit(function(event) {
+          event.preventDefault();
+
+          const formItem = $('#item').val()
+
+          todoRef.push({
+            item: formItem,
+            completed: false
+          });
+
+          $('#item').val('').focus();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>To Do List</h1>
+
+    <ol></ol>
+
+    <h2>Add an item to the list:</h2>
+
+    <form>
+      <input id="item" name="item" type="text">
+      <input type="submit">
+    </form>
+  </body>
+</html>
