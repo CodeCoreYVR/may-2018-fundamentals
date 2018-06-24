@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Awesome Messages</title>
+
+    <style media="screen">
+      #message-list > div {
+        border: 0.5px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+      }
+    </style>
+
+    <!-- 1. require jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <!-- 2. require Firebase -->
+    <!-- 3. Initialize firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCz34Y2zLaqRjRt4ZiGfULwgNnTtJequ9Y",
+        authDomain: "day9-151ab.firebaseapp.com",
+        databaseURL: "https://day9-151ab.firebaseio.com",
+        projectId: "day9-151ab",
+        storageBucket: "day9-151ab.appspot.com",
+        messagingSenderId: "575465161051"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <!-- Our own custom code is in this script tag -->
+    <script type="text/javascript">
+      const messagesRef = firebase.database().ref('messages')
+
+      messagesRef.on('child_added', function(data) {
+        const id = data.key
+        let message = data.val()
+
+        $('#message-list').prepend(`
+          <div id="message-${id}">
+            ${message.name}
+            <br/>
+            ${message.body}
+            <br/>
+            <button id="delete-${id}">Delete</button>
+          </div>
+        `)
+
+        $(`button#delete-${id}`).click(function(event) {
+          event.preventDefault()
+
+          firebase.database().ref(`messages/${id}`).remove()
+        })
+      })
+
+      messagesRef.on('child_removed', function(data) {
+        const id = data.key
+
+        $(`#message-${id}`).fadeOut()
+      })
+
+      $(document).ready(function() {
+        $("form#message-form").submit(function(event) {
+          event.preventDefault()
+
+          // Select the form values
+          const inputName = $("input#name").val()
+          const inputBody = $("input#body").val()
+
+          // Create the message on Firebase
+          messagesRef.push({
+            name: inputName,
+            body: inputBody
+          })
+
+          // Reset the form
+          $(this).trigger("reset");
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <h1>Awesome Messages</h1>
+
+    <form id="message-form">
+      <label for="name">Name: </label>
+      <input id="name" type="text" name="name" />
+
+      <br/>
+
+      <label for="body">Body: </label>
+      <input id="body" type="text" name="body" />
+
+      <br/>
+
+      <input type="submit"value="Submit Message">
+    </form>
+
+    <br/>
+
+    <div id="message-list"></div>
+  </body>
+</html>
