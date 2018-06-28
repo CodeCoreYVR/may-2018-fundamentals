@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Bootstrap Layout</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <style media="screen">
+      .box {
+        border: 1px solid cyan;
+        min-height: 600px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 box">
+          <!-- Put the 3 by 3 grid inside here -->
+          <div class="row">
+            <!-- first layer -->
+            <div class="col-md-4">
+              <img src="https://placeimg.com/640/480/people" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+              <img src="https://placeimg.com/640/480/people" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+              <img src="https://placeimg.com/640/480/people" class="img-fluid">
+            </div>
+
+            <!-- second layer -->
+            <div class="col-md-4">
+              <img src="https://placeimg.com/640/480/people" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+              <img src="https://placeimg.com/640/480/people" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+              <img src="https://placeimg.com/640/480/people" class="img-fluid">
+            </div>
+
+            <!-- third layer -->
+            <div class="col-md-4">
+              <img src="https://placeimg.com/640/480/people" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+              <img src="https://placeimg.com/640/480/people" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+              <img src="https://placeimg.com/640/480/people" class="img-fluid">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 box">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div>
+
+      <br/>
+
+      <div class="row">
+        <div class="col-md-3 offset-md-9 box">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
