@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Media Query</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <style>
+      /* @ = ???? */
+      /* & = ambersand */
+      /* @font-face {} */
+      /* @import "style.css"; */
+      /* @keyframes {} */
+      li {
+        display: inline-block;
+        padding: 10px;
+      }
+      a {
+        text-decoration: none;
+        font-family: sans-serif;
+        color: white;
+        font-size: 20px;
+      }
+
+      @media (max-width: 1280px) {
+        body {
+          background-color: red;
+        }
+        li {
+          background-color: green;
+        }
+      }
+      @media (max-width: 1024px) {
+        body {
+          background-color: orange;
+        }
+        li {
+          background-color: blue;
+        }
+      }
+      @media (max-width: 800px) {
+        body {
+          background-color: yellow;
+        }
+        li {
+          background-color: purple;
+          display: none;
+        }
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>

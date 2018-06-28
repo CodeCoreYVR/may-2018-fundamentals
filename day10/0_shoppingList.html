@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Shopping List</title>
+    <!-- 2. create the interactivity -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+     <!-- initialize firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAzUUnMYzQyX_aUu3FnrRL4cCW1svaIodg",
+        authDomain: "day10-5f3b7.firebaseapp.com",
+        databaseURL: "https://day10-5f3b7.firebaseio.com",
+        projectId: "day10-5f3b7",
+        storageBucket: "",
+        messagingSenderId: "578485485574"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script>
+
+      // 3. make sure the page is ready
+      // event based programming
+      // async programming
+      // event loop
+      $(document).ready(function(){
+        console.log("The document is ready!");
+        // 5. connect to your database!
+        let shoppingListRef = firebase.database().ref('/shoppingList');
+
+        // 6. database events
+        // $(document).ready();
+        // $(document).on("ready", function(){});
+        // child added event will be called for each record in your database.
+        // it will also be triggered when you add items to your database.
+        shoppingListRef.on('child_added', function(data){
+          // console.log(data);
+          // console.log(data.key); // unique id
+          console.log(data.val()); // fields and values
+          let itemObj = data.val();
+          // { item: "beer" }
+          itemObj.item; // "beer"
+
+          // const me = {
+          //   name: "Jacob"
+          // };
+          //
+          // me.jacob;
+          // when i receive data from this event, i want to populate my list with the content inside the data
+          // data.val() == { item: "beer" };
+          $('ul').append(`<li>${ itemObj.item }</li>`);
+        });
+
+        $('#item').focus();
+        $('form').submit(function(event){
+          event.preventDefault();
+          // take the text from the text field and add it to the shoppingList
+
+          // 4. how do we grab the text from the textfield????
+          let item = $('#item').val(); // getting
+          // let item = "<li>" + $('#item').val() + "</li>"; // getting
+          // let item = `<li>${ $('#item').val() }</li>`; // getting
+          // $('#item').val("bagels"); // setting
+
+          // $('ul').append( item );
+
+          // puts the item into the list
+          $('ul').append(`<li>${item}</li>`);
+
+          // this will clear the text field and give it focus
+          $('#item').val('').focus();
+
+        });
+
+      });
+      // document.addEventListener("DOMContentLoaded", function());
+      // document.getElementByTagName('h1');
+    </script>
+    <style>
+      /* css rule */
+      h1 {
+        color: hotpink;
+        font-family: fantasy;
+      }
+      #item {
+        /* # = id */
+      }
+      .text-field {
+        /* . = class */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1. create a sample view -->
+    <h1>Shopping List</h1>
+
+    <h2>Enter in an item:</h2>
+    <form action="" method="">
+      <input id="item" class="text-field" type="text">
+      <!-- <input type="date">
+      <input type="time">
+      <input type="color"> -->
+      <input type="submit">
+    </form>
+
+    <ul>
+    </ul>
+  </body>
+</html>
+
+
+
+
+
+
+<!--  -->
