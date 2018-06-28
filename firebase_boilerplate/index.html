@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Firebase App</title>
+
+    <!-- 1. require Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- 2. require jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- 3. require popper.js a Bootstrap dependency -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <!-- 4. require Bootstrap.js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- 5. require and initialize Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script>
+      // <!-- Just copy and paste from https://console.firebase.google.com/ -->
+    </script>
+
+    <!-- Our own custom code will be placed in this script tag -->
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // This is where your custom JavaScript code will go...
+        $(".container").append(`<h3>Looks like its working alright...</h3>`)
+
+        setInterval(function() {
+          $("h3").fadeToggle(2000);
+        }, 2000);
+      })
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Firebase Application...</h1>
+    </div>
+  </body>
+</html>
